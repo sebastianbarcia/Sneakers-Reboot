@@ -1,11 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import OnBoarding from '../components/OnBoarding'
 
 const Profile = () => {
   return (
-    <View style={styles.screen}>
-      <Text>Profile</Text>
-    </View>
+    <OnBoarding/>
   )
 }
 
