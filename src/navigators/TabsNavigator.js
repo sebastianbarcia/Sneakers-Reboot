@@ -26,6 +26,7 @@ const TabsNavigator = () => {
             name={item.name}
             component={item.component}
             options={{
+              headerShown: item.headerShow,
               tabBarIcon: ({ focused }) => (
                 <View style={styles.tabBarIcon}>
                   {item.name === "Tienda" ? (

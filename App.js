@@ -1,9 +1,17 @@
 import { StyleSheet} from 'react-native';
 import MainNavigator from './src/navigators/MainNavigator';
-
+import OnBoarding from './src/components/OnBoarding';
+import store from './src/store';
+import { Provider } from 'react-redux';
 export default function App() {
   return (
-    <MainNavigator />
+    <>
+    <Provider store={store}>
+      {/* <OnBoarding/> */}
+      <MainNavigator/> 
+    </Provider>
+   
+    </>
   );
 }
 

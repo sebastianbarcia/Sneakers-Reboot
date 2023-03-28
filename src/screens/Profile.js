@@ -1,15 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import OnBoarding from '../components/OnBoarding'
+import Form from '../components/Form'
 
 const Profile = () => {
   return (
-    <OnBoarding/>
+    <>
+    <Form/>
+   {/* <OnBoarding/> */}
+    </>
   )
 }
 
 export default Profile
 
-const styles = StyleSheet.create({
-  screen:{ flex:1 , justifyContent:"center" , alignItems:"center"}
-})
