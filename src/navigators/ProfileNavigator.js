@@ -1,6 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Form from '../components/Form';
-import ShoesScreen from '../screens/ShoesScreen';
+
+import TypeUser from '../screens/TypeUser';
+
 const Stack = createNativeStackNavigator();
 
 const ProfileNavigator = () => {
@@ -26,7 +28,7 @@ const ProfileNavigator = () => {
         />
         <Stack.Screen
           name="Products"
-          component={ShoesScreen}
+          component={TypeUser}
           options={({ route }) => ({ title: `${route.params.shoesUser.name} ${route.params.shoesUser.brand}`})}
 
         />

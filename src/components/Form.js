@@ -6,7 +6,6 @@ import { Dropdown } from "react-native-element-dropdown";
 
 import {
   widthPixel,
-  pixelSizeHorizontal,
   heightPixel,
 } from "../utils/normalize";
 
@@ -15,7 +14,8 @@ import { useSelector , useDispatch } from "react-redux";
 import { filterShoes , filterModel } from "../store/actions/shoes.actions";
 import { findSizes, sizesShoes } from "../store/actions/sizeShoes.actions";
 import { shoesColor , filterColor } from "../store/actions/colorShoes.actions";
-
+import { confirmShoe } from "../store/actions/dataShoesUser.actions";
+import TitleForm from "./TitleForm";
 const Form = ({ navigation }) => {
 
   //redux
@@ -62,9 +62,13 @@ const Form = ({ navigation }) => {
   const [shoes, setShoes] = useState();
   
   const handleShoes = () => {
-
-    if (shoes !== undefined && filterColorShoes.color !== null && findSizesShoes.size !== undefined) {
+    
+      
+    if (shoes !== undefined && filterColorShoes.color !== undefined && findSizesShoes.size !== undefined) {
       const shoesUser = { ...shoes, color: filterColorShoes.color , size: findSizesShoes.size };
+      
+      //!IMPORTANTE LUEGO ESTO HAY QUE PONERLO EN LA ULTIMA PARTE PARA CONFIRMAR
+     // dispatch(confirmShoe(shoesUser));
       
       navigation.push("Products", {
         shoesUser, 
@@ -129,10 +133,7 @@ const Form = ({ navigation }) => {
   
   return (
     <SafeAreaView style={styles.screenView}>
-      <Text style={styles.title}>¿Cual es tu zapatilla?</Text>
-      <Text style={styles.subtitle}>
-        Elige entre todos los modelos de nuestra base de datos
-      </Text>
+      <TitleForm title="¿Cual es tu zapatilla?" subtitle="Elige entre todos los modelos de nuestra base de datos"/>
       <View style={styles.container}>
         {renderLabelBrand()}
         {/*Brand*/}
@@ -288,25 +289,6 @@ const styles = StyleSheet.create({
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
-  },
-  title: {
-    textAlign: "center",
-    fontSize: 20,
-    fontWeight: "bold",
-    marginBottom: 8,
-    marginTop: pixelSizeHorizontal(58),
-    width: widthPixel(338),
-    display: "flex",
-    justifyContent: "center",
-    alignSelf: "center",
-  },
-  subtitle: {
-    fontSize: 16,
-    textAlign: "center",
-    marginTop: 6,
-    marginBottom: pixelSizeHorizontal(55),
-    width: widthPixel(338),
-    alignSelf: "center",
   },
   screenView: {
     height: "100%",
