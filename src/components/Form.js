@@ -14,8 +14,8 @@ import { useSelector , useDispatch } from "react-redux";
 import { filterShoes , filterModel } from "../store/actions/shoes.actions";
 import { findSizes, sizesShoes } from "../store/actions/sizeShoes.actions";
 import { shoesColor , filterColor } from "../store/actions/colorShoes.actions";
-import { confirmShoe } from "../store/actions/dataShoesUser.actions";
 import TitleForm from "./TitleForm";
+
 const Form = ({ navigation }) => {
 
   //redux
@@ -42,11 +42,10 @@ const Form = ({ navigation }) => {
   const colorShoes = useSelector(state => state.color.color)
   const filterColorShoes = useSelector(state => state.color.findColor)
   
-
   //brand
   const [isFocusBrand, setIsFocusBrand] = useState(false);
   const [valueBrand, setValueBrand] = useState(null);
-
+  
   //model
   const [modelFiltered, setModelFiltered] = useState();
   const [valueModel, setValueModel] = useState(null);
@@ -62,14 +61,8 @@ const Form = ({ navigation }) => {
   const [shoes, setShoes] = useState();
   
   const handleShoes = () => {
-    
-      
     if (shoes !== undefined && filterColorShoes.color !== undefined && findSizesShoes.size !== undefined) {
       const shoesUser = { ...shoes, color: filterColorShoes.color , size: findSizesShoes.size };
-      
-      //!IMPORTANTE LUEGO ESTO HAY QUE PONERLO EN LA ULTIMA PARTE PARA CONFIRMAR
-     // dispatch(confirmShoe(shoesUser));
-      
       navigation.push("Products", {
         shoesUser, 
       });
@@ -116,8 +109,6 @@ const Form = ({ navigation }) => {
     }
     return null;
   };
-
-  //dejo acá!
 
   useEffect(() => {
     //filtrado que elimina marcas repetidas

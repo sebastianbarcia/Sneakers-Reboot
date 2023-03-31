@@ -2,7 +2,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Form from '../components/Form';
 
 import TypeUser from '../screens/TypeUser';
-
+import UserKmLimit from '../screens/UserKmLimit';
+import UserProfile from '../screens/UserProfile';
 const Stack = createNativeStackNavigator();
 
 const ProfileNavigator = () => {
@@ -23,20 +24,24 @@ const ProfileNavigator = () => {
           name="Form"
           component={Form}
            options={{
-            headerShown:false,
+            headerShown:false
            }}
         />
         <Stack.Screen
           name="Products"
           component={TypeUser}
           options={({ route }) => ({ title: `${route.params.shoesUser.name} ${route.params.shoesUser.brand}`})}
-
         />
-        {/* 
         <Stack.Screen
-          name="Detail"
-          component={BreadDetailScreen} 
-          /> */}
+          name="UserKm"
+          component={UserKmLimit} 
+          options={({ route }) => ({ title: `${route.params.selected.name} ${route.params.selected.brand}`})}
+          /> 
+         <Stack.Screen
+          name="userProfile"
+          component={UserProfile} 
+          options={{headerBackVisible:false}}
+          /> 
       </Stack.Navigator>
     )
 }

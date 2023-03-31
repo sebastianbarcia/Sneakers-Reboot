@@ -18,6 +18,7 @@ const TypeUserGrid = ({ typesUsers, onSelect }) => {
           <TouchableOpacity
             onPress={() => onSelect(item)}
             style={styles.container}
+            key={item.id}
           >
             <View style={styles.title} key={item.id}>
               {item.use === "Ocasional" && (
@@ -62,17 +63,18 @@ const styles = StyleSheet.create({
     height: heightPixel(282),
     display: "flex",
     flexWrap: "wrap",
+    flexDirection:"row",
+    gap: 10,
+    rowGap:18,
     justifyContent: "center",
-    alignContent: "space-between",
     alignSelf: "center",
+    marginTop: pixelSizeHorizontal(16) 
   },
   container: {
     borderRadius: 4,
     height: heightPixel(120),
     backgroundColor: "#DBDBDB",
     width: widthPixel(164),
-    marginTop: pixelSizeHorizontal(9),
-    marginBottom: pixelSizeHorizontal(9),
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

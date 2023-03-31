@@ -1,31 +1,29 @@
 import { SafeAreaView, StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import {
-  heightPixel,
   widthPixel,
   fontPixel,
   pixelSizeHorizontal,
 } from "../utils/normalize";
 import { typesUsers } from "../data/dataTypesUsers";
 import TypeUserGrid from "../components/TypeUserGrid";
-const TypeUser = ({ route }) => {
+import ShowProduct from "../components/ShowProduct";
+const TypeUser = ({ route , navigation }) => {
   const { shoesUser } = route.params;
 
-  const handleSelect = () => {
-    console.log("hola")
+  const handleSelect = (item) => {
+    const selected = {...shoesUser , item}
+    navigation.push("UserKm", {
+      selected 
+    })
   }
 
 
   return (
       <View>
-        <Image
-          style={styles.image}
-          source={{ uri: shoesUser.image.original }}
-        ></Image>
-        <Text style={styles.title}>¿Cada cuanto las utilizas?</Text>
+        <ShowProduct imgSrc={shoesUser.image.original} title={`¿Cada cuanto las utilizas?`}/>
         <Text style={styles.subtitle}>
-          Que uso le vas a dar a tus zapatillas y calcularemos el tiempo de uso
-          estimado
+         {`Que uso le vas a dar a tus ${shoesUser.name} y calcularemos el tiempo de uso estimado`} 
         </Text>
         <TypeUserGrid typesUsers={typesUsers} onSelect={handleSelect}/>
       </View>
@@ -35,21 +33,6 @@ const TypeUser = ({ route }) => {
 export default TypeUser;
 
 const styles = StyleSheet.create({
-  image: {
-    height: heightPixel(210),
-    width: "100%",
-  },
-  title: {
-    textAlign: "left",
-    fontSize: fontPixel(20),
-    fontWeight: "bold",
-    marginBottom: pixelSizeHorizontal(8),
-    marginTop: pixelSizeHorizontal(16),
-    width: widthPixel(338),
-    display: "flex",
-    justifyContent: "center",
-    alignSelf: "center",
-  },
   subtitle: {
     fontSize: fontPixel(14),
     textAlign: "left",
