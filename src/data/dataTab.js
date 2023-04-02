@@ -1,4 +1,4 @@
-import ProfileNavigator from "../navigators/ProfileNavigator";
+import FormNavigator from "../navigators/ProfileNavigator";
 import { Activity, Profile, Statistics, Shop } from "../screens/index";
 
 const dataTab = [
@@ -9,7 +9,7 @@ const dataTab = [
       icon: "flash-outline",
       headerShow : true
     },
-    { id: 2, name: "Perfil", component: ProfileNavigator, icon: "person-outline" , headerShow : false },
+    { id: 2, name: "Perfil", component: Profile, icon: "person-outline" , headerShow : false },
     {
       id: 3,
       name: "Estadisticas",

@@ -1,27 +1,21 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Form from '../components/Form';
+import ShowSneakerItem from '../screens/ShowSneakerItem';
+
 
 import TypeUser from '../screens/TypeUser';
 import UserKmLimit from '../screens/UserKmLimit';
 import UserProfile from '../screens/UserProfile';
-
-import ShowSneakerItem from '../screens/ShowSneakerItem';
 const Stack = createNativeStackNavigator();
 
-const ProfileNavigator = () => {
+const UserShoeNavigator = () => {
     return(
-        <Stack.Navigator initialRouteName= "Form"
-        screenOptions={{
-        //  headerShown:false
-        //   headerStyle: {
-        //     backgroundColor: Platform.OS === 'android' ? COLORS.primary : ''
-        //   },
-        //  headerTintColor: Platform.OS === 'android' ? 'white' : COLORS.primary,
-        //   headerTitleStyle: {
-        //     fontFamily: 'OpenSans_700Bold'
-        //   }
-        }}
+        <Stack.Navigator initialRouteName={"userProfile"} 
+        // screenOptions={{
+       
+        // }}
       >
+        
         <Stack.Screen
           name="Form"
           component={Form}
@@ -29,7 +23,7 @@ const ProfileNavigator = () => {
             headerShown:false
            }}
         />
-        <Stack.Screen
+         <Stack.Screen
           name="Products"
           component={TypeUser}
           options={({ route }) => ({ title: `${route.params.shoesUser.name} ${route.params.shoesUser.brand}`})}
@@ -39,6 +33,7 @@ const ProfileNavigator = () => {
           component={UserKmLimit} 
           options={({ route }) => ({ title: `${route.params.selected.name} ${route.params.selected.brand}`})}
           /> 
+      
          <Stack.Screen
           name="userProfile"
           component={UserProfile} 
@@ -47,10 +42,10 @@ const ProfileNavigator = () => {
            <Stack.Screen
           name="sneakerItem"
           component={ShowSneakerItem} 
-          options={{headerBackVisible:false}}
+          
           /> 
       </Stack.Navigator>
     )
 }
 
-export default ProfileNavigator
+export default UserShoeNavigator

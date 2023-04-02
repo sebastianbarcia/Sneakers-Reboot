@@ -18,7 +18,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 const UserProfile = ({ navigation, route }) => {
   
-  const { userShoe } = route.params;
+ // const { userShoe } = route.params;
   
   const dispatch = useDispatch();
   const lista = useSelector((state) => state.list.list);
@@ -31,9 +31,10 @@ const UserProfile = ({ navigation, route }) => {
   const handleAddSneaker = () =>{
     
     navigation.push('Form')
+    
   }
 
-  const renderShoesItem = ({ item }) => <ShoesItems item={item} />;
+  const renderShoesItem = ({ item }) => <ShoesItems item={item} navigation={navigation} />;
 
   return (
     <View style={styles.container}>
