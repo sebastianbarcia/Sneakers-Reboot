@@ -2,9 +2,12 @@ import { StyleSheet,Pressable ,Image } from 'react-native'
 import { FontAwesome5 } from "@expo/vector-icons";
 import React from 'react'
 
-const UserPic = () => {
+const UserPic = ({navigation}) => {
+  const handlePic = () =>{
+    navigation.push("picShot")
+  }
   return (
-    <Pressable onPress={()=> console.log("hola")} 
+    <Pressable onPress={handlePic} 
     style={styles.img}>
       <FontAwesome5 name="user-alt" size={16} color="black" />
         {/* <Image source={{""}}></Image> */}

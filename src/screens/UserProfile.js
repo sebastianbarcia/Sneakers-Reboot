@@ -49,7 +49,7 @@ const UserProfile = ({ navigation, route }) => {
         <View
           style={styles.containerIcons}
         >
-          <UserPic />
+          <UserPic navigation={navigation} />
           <Pressable onPress={() => console.log("edit")}>
             <FontAwesome5 name="edit" size={18} color="black" />
           </Pressable>

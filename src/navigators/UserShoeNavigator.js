@@ -6,6 +6,7 @@ import ShowSneakerItem from '../screens/ShowSneakerItem';
 import TypeUser from '../screens/TypeUser';
 import UserKmLimit from '../screens/UserKmLimit';
 import UserProfile from '../screens/UserProfile';
+import ImageSelector from '../screens/ImageSelector';
 const Stack = createNativeStackNavigator();
 
 const UserShoeNavigator = () => {
@@ -43,6 +44,11 @@ const UserShoeNavigator = () => {
           name="sneakerItem"
           component={ShowSneakerItem} 
           
+          /> 
+           <Stack.Screen
+          name="picShot"
+          component={ImageSelector} 
+         
           /> 
       </Stack.Navigator>
     )
