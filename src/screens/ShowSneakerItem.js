@@ -2,12 +2,24 @@ import { Button, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import ShowProduct from "../components/ShowProduct";
 import { fontPixel, pixelSizeHorizontal, widthPixel } from "../utils/normalize";
+import { removeShoe } from "../store/actions/dataShoesUser.actions";
+import { useDispatch } from "react-redux";
+import { getShoes } from "../store/actions/shoesUserList.action";
 
-const ShowSneakerItem = ({ route }) => {
+const ShowSneakerItem = ({ route , navigation }) => {
   //falta la cantidad de kilometros que hizo la zapatilla y la fecha de ultimo dia de actividad
 
   const sneaker = route.params;
   const day = new Date(sneaker.item.date);
+
+  const dispatch = useDispatch();
+ 
+  const handleDelete = (item) => {
+    dispatch(removeShoe(item))
+    
+    navigation.push("userProfile")
+  }
+  
 
   return (
     <>
@@ -39,7 +51,7 @@ const ShowSneakerItem = ({ route }) => {
 
         </View>
         <View style={styles.buttonDelete} >
-          <Button title="ELIMINAR" onPress={()=>console.log("eliminaritem")}></Button>
+          <Button title="ELIMINAR" onPress={()=>handleDelete(sneaker.item.id)}></Button>
         </View>
       </View>
     </>

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import OnBoarding from '../components/OnBoarding'
 import Form from '../components/Form'
 import FormNavigator from '../navigators/ProfileNavigator'
@@ -10,14 +10,15 @@ import { useEffect } from 'react'
 
 const Profile = () => {
     const dispatch = useDispatch();
-    const lista = useSelector((state) => state.list.list);
-  
+    const list = useSelector((state) => state.list.list);
+   
+    
   useEffect(() => {
     dispatch(getShoes());
-    
+   
   }, []);
-
-  if(!lista || (lista.length === 0)){
+  
+  if(!list || (list.length === 0)){
 
       return (
         <>

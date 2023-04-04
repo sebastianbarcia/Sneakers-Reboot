@@ -5,12 +5,7 @@ import { fontPixel, pixelSizeHorizontal } from '../utils/normalize';
 
 const ShoesItems = ({item ,  navigation }) => {
   
-  
-
   const handleShoes = (item) => {
-
-    
-   
      navigation.push('sneakerItem',{
        item
      })

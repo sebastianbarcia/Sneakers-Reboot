@@ -17,6 +17,7 @@ export const getShoes = () => {
         ...result[key],
         id: key,
       }));
+     
       dispatch({
         type: GET_SHOES,
         payload: orders,

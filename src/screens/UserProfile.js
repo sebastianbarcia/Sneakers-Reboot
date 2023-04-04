@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { fontPixel, pixelSizeHorizontal, widthPixel } from "../utils/normalize";
 import UserPic from "../components/UserPic";
@@ -23,6 +23,7 @@ const UserProfile = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const lista = useSelector((state) => state.list.list);
   
+
   useEffect(() => {
     dispatch(getShoes());
     
