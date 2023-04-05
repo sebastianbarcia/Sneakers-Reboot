@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
-import OnBoarding from '../components/OnBoarding'
-import Form from '../components/Form'
+//import { StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+// import OnBoarding from '../components/OnBoarding'
+// import Form from '../components/Form'
 import FormNavigator from '../navigators/ProfileNavigator'
 import { useDispatch, useSelector } from "react-redux";
 import { getShoes } from "../store/actions/shoesUserList.action";
