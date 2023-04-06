@@ -23,7 +23,6 @@ const UserProfile = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const lista = useSelector((state) => state.list.list);
   
-
   useEffect(() => {
     dispatch(getShoes());
     

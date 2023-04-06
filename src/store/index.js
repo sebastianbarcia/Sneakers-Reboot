@@ -5,13 +5,15 @@ import sizeShoesReducer from "./reducers/sizeShoes.reducers";
 import colorShoesReducer from "./reducers/colorShoes.reducers";
 import userDataShoesReducer from "./reducers/dataShoesUser.reducers";
 import ShoeUserListReducer from "./reducers/shoesUserList.reducer";
+import photoReducer from "./reducers/photo.reducer";
 
 const RootReducer = combineReducers({
     brand : brandReducer,
     size : sizeShoesReducer,
     color : colorShoesReducer,
     dataUser : userDataShoesReducer,
-    list : ShoeUserListReducer
+    list : ShoeUserListReducer,
+    image: photoReducer
 })
 
 export default createStore(RootReducer , applyMiddleware(thunk));
