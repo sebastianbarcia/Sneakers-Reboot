@@ -50,8 +50,11 @@ const ImageSelector = ({ navigation }) => {
           <Image style={styles.image} source={{ uri: pickedUri }}></Image>
         )}
       </View>
-      <Button title="TOMAR FOTO" onPress={handlerTakeImage}></Button>
-      <Button title="CONFIRMAR" onPress={handleSave}></Button>
+      <View>
+        <Button title="TOMAR FOTO" onPress={handlerTakeImage}></Button>
+        <Button title="CONFIRMAR" onPress={handleSave}></Button>
+      </View>
+     
     </View>
   );
 };
