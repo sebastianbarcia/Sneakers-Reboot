@@ -11,7 +11,7 @@ import { useEffect } from 'react'
 const Profile = () => {
     const dispatch = useDispatch();
     const list = useSelector((state) => state.list.list);
-   
+  
     
   useEffect(() => {
     dispatch(getShoes());

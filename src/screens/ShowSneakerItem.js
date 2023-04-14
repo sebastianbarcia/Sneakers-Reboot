@@ -15,9 +15,10 @@ const ShowSneakerItem = ({ route , navigation }) => {
   const dispatch = useDispatch();
  
   const handleDelete = (item) => {
+   
     dispatch(removeShoe(item))
     
-    navigation.push("userProfile")
+   //ahi que cambiar esto porque solo va a userProfile  navigation.push("userProfile")
   }
   
 

@@ -6,9 +6,11 @@ const initialState = {
 };
 
 const ShoeUserListReducer = (state = initialState , action) =>{
-   
+    
     switch (action.type) {
+       
         case GET_SHOES:
+           
             return{
                 ...state,
                 list: action.payload,

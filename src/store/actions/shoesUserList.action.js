@@ -3,7 +3,9 @@ import { API_URL } from "../../constants/Database";
 export const GET_SHOES = "GET_SHOES";
 
 export const getShoes = () => {
+ 
   return async (dispatch) => {
+   
     try {
       const response = await fetch(`${API_URL}/orders.json`, {
         method: "GET",
@@ -12,6 +14,13 @@ export const getShoes = () => {
         },
       });
       const result = await response.json();
+   
+      if(result === null){
+        return dispatch({
+        type: GET_SHOES,
+        payload: orders,
+      });
+      }
       
       const orders = Object.keys(result).map((key) => ({
         ...result[key],
@@ -22,6 +31,7 @@ export const getShoes = () => {
         type: GET_SHOES,
         payload: orders,
       });
+
     } catch (error) {
       console.log(error.message);
     }
