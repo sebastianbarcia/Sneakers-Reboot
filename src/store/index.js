@@ -6,6 +6,7 @@ import colorShoesReducer from "./reducers/colorShoes.reducers";
 import userDataShoesReducer from "./reducers/dataShoesUser.reducers";
 import ShoeUserListReducer from "./reducers/shoesUserList.reducer";
 import photoReducer from "./reducers/photo.reducer";
+import AuthReducer from "./reducers/auth.reducer";
 
 const RootReducer = combineReducers({
     brand : brandReducer,
@@ -13,7 +14,8 @@ const RootReducer = combineReducers({
     color : colorShoesReducer,
     dataUser : userDataShoesReducer,
     list : ShoeUserListReducer,
-    image: photoReducer
+    image: photoReducer,
+    auth : AuthReducer
 })
 
 export default createStore(RootReducer , applyMiddleware(thunk));

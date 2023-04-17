@@ -9,8 +9,16 @@ import React from "react";
 import Carousel from "pinar";
 import { fontPixel, heightPixel, widthPixel } from "../utils/normalize";
 import sliderOnBoarding from "../data/onBoardingData";
+import ButtonForm from "../components/ButtonForm";
 
-const OnBoarding = () => {
+const OnBoarding = ({navigation}) => {
+
+  function handleRegistration(){
+    navigation.push("Register")
+  }
+  function handleLogin(){
+    navigation.push("Login")
+  }
   return (
     <>
       <Carousel>
@@ -32,11 +40,10 @@ const OnBoarding = () => {
       <View style={styles.logo}>
         <Text style={styles.logotype}>Sneakers Reboot</Text>
       </View>
-      <TouchableHighlight style={styles.button} onPress={() => {console.log("hola")}}>
-        <View>
-          <Text style={styles.buttonText}>LET`S START</Text>
-        </View>
-      </TouchableHighlight>
+      <View style={{position: "absolute",  bottom: 42, alignSelf: "center", gap:16}}>
+      <ButtonForm text={"REGISTRARSE"} handleCheck={handleRegistration}/>
+      <ButtonForm text={"INICIAR SESIÓN"} handleCheck={handleLogin}/>
+      </View>
     </>
   );
 };

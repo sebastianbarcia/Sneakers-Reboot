@@ -1,16 +1,18 @@
 import { StyleSheet, Text, View, Image, Button, Alert } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as ImagePicker from "expo-image-picker";
 import { useDispatch } from "react-redux";
 import { addPhoto } from "../store/actions/photo.actions";
 import { widthPixel } from "../utils/normalize";
+
 //import * as Permission from 'expo-permissions'
 
-const ImageSelector = ({ navigation }) => {
+const ImageSelector = ({ navigation , picRegistered }) => {
+ 
   const dispatch = useDispatch();
 
   const [pickedUri, setPickedUri] = useState();
-
+ 
   const verifyPermission = async () => {
     const { status } = await ImagePicker.requestCameraPermissionsAsync();
 
@@ -39,7 +41,11 @@ const ImageSelector = ({ navigation }) => {
 
   function handleSave() {
     dispatch(addPhoto(pickedUri));
-    navigation.push("userProfile");
+    if(navigation.push("userProfile")){
+      navigation.push("userProfile");
+    }else if(navigation.push("Register")){ 
+      navigation.push("Register");
+    }
   }
   return (
     <View style={styles.container}>

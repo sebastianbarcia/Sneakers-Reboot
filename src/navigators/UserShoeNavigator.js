@@ -21,7 +21,7 @@ const UserShoeNavigator = () => {
   //reves en el caso de que haya akgun elemento dentro de list
   
     return(
-        <Stack.Navigator initialRouteName={(list === undefined) ? "Form" : "userProfile"} 
+        <Stack.Navigator initialRouteName={(list) ? "Form" : "userProfile"} 
         // screenOptions={{
        
         // }}

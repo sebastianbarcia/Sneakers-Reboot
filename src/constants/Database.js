@@ -1,1 +1,2 @@
 export const API_URL = 'https://sneakers-reboot-default-rtdb.europe-west1.firebasedatabase.app/'
+export const URL_AUTH_SIGNUP = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyC9HYPsIlbvf2w40paseumYHk4uqk7fa-A'

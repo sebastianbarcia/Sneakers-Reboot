@@ -40,6 +40,7 @@ const Form = ({ navigation }) => {
    
   //color
   const colorShoes = useSelector(state => state.color.color)
+  
   const filterColorShoes = useSelector(state => state.color.findColor)
   
   //brand

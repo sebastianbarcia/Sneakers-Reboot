@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 
 const UserPic = ({ navigation }) => {
   const usesPhotos = useSelector((state) => state.image.photos.image);
+
+  
  
   const handlePic = () => {
     navigation.push("picShot");
