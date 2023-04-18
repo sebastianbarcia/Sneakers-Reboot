@@ -8,6 +8,16 @@ import ShoeUserListReducer from "./reducers/shoesUserList.reducer";
 import photoReducer from "./reducers/photo.reducer";
 import AuthReducer from "./reducers/auth.reducer";
 
+import { persistStore, persistReducer } from 'redux-persist'
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+const persistConfig = {
+    key: 'root',
+    storage: AsyncStorage
+  }
+
+
 const RootReducer = combineReducers({
     brand : brandReducer,
     size : sizeShoesReducer,
@@ -17,5 +27,11 @@ const RootReducer = combineReducers({
     image: photoReducer,
     auth : AuthReducer
 })
+
+
+const persistedReducer = persistReducer(persistConfig, RootReducer)
+
+export const store =  createStore(persistedReducer, applyMiddleware(thunk));
+export const storePersisted = persistStore(store);
 
 export default createStore(RootReducer , applyMiddleware(thunk));

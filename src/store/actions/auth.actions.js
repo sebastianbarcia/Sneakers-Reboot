@@ -37,7 +37,12 @@ export const signup = (password , email , nameUser , valueDropdown , date , uses
     dispatch({
         type: SIGNUP,
         token: data.idToken,
-        userId: data.localId
+        userId: data.localId,
+        nameUser: nameUser,
+        value : valueDropdown,
+        date: date,
+        photos: usesPhotos,
+        mail : email
     })
     }catch(error){
         console.error(error)

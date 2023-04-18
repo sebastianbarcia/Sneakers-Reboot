@@ -73,7 +73,7 @@ const Register = ({ navigation }) => {
 // EVENTO CHECK DATOS
 
   const handleCheck = () => {
-    console.log(valueDropdown)
+    
     if ((password.length > 8) && nameUser && email) {
      
       dispatch(signup(password , email , nameUser , valueDropdown , date , usesPhotos))

@@ -22,6 +22,8 @@ const UserProfile = ({ navigation, route }) => {
   
   const dispatch = useDispatch();
   const lista = useSelector((state) => state.list.list);
+  const user = useSelector((state) => state.auth)
+  console.log("usuario", user)
   
   useEffect(() => {
     dispatch(getShoes());
@@ -40,8 +42,8 @@ const UserProfile = ({ navigation, route }) => {
     <View style={styles.container}>
       <View style={styles.profileUser}>
         <View style={styles.textProfile}>
-          <Text style={styles.userName}>Sebastian Barcia</Text>
-          <Text style={styles.text}>Argentina</Text>
+          <Text style={styles.userName}>{user.nameUser}</Text>
+          <Text style={styles.text}>{user.valueDropdown}</Text>
           <Text style={styles.text}>30 años</Text>
           <Text style={styles.text}>700 kms</Text>
         </View>

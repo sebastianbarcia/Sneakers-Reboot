@@ -42,7 +42,6 @@ const OnBoarding = ({navigation}) => {
       </View>
       <View style={{position: "absolute",  bottom: 42, alignSelf: "center", gap:16}}>
       <ButtonForm text={"REGISTRARSE"} handleCheck={handleRegistration}/>
-      <ButtonForm text={"INICIAR SESIÓN"} handleCheck={handleLogin}/>
       </View>
     </>
   );

@@ -38,6 +38,8 @@ const Form = ({ navigation }) => {
       brand: brand,
   }))
    
+const hola = useSelector(state => state)
+console.log(hola)
   //color
   const colorShoes = useSelector(state => state.color.color)
   
