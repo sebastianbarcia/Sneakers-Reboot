@@ -23,7 +23,6 @@ const UserProfile = ({ navigation, route }) => {
   const dispatch = useDispatch();
   const lista = useSelector((state) => state.list.list);
   const user = useSelector((state) => state.auth)
-  console.log("usuario", user)
   
   useEffect(() => {
     dispatch(getShoes());

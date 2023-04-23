@@ -13,7 +13,7 @@ const Modal = ({
     <RNmodal animationType="slide" transparent={true} visible={modalVisible}>
       <View style={styles.modalMainView}>
         <View style={styles.modalView}>
-          <Text style={styles.modalTitle}>{`¿Confirma la zapatilla ${selectedItem.name}?`}</Text>
+          <Text style={styles.modalTitle}>{selectedItem}</Text>
           
           <View style={styles.modalActions}>
             <ButtonModal

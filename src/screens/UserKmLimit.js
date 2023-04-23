@@ -57,7 +57,7 @@ function onSelectItem(){
       <Button title="CONFIRMAR" onPress={estimateKms} ></Button>
       <Modal
        modalVisible={modalVisible}
-        selectedItem={selected}
+        selectedItem={`¿Confirma la zapatilla ${selected.name}?`}
         onCancelModal={onCancelModal}
         onSelectItem={onSelectItem}
       />  

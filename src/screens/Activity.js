@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { Button } from 'react-native'
+import ActivityNavigator from '../navigators/ActivityNavigator'
 
 const Activity = () => {
+  
   return (
-    <View style={styles.screen}>
-      <Text>Activity</Text>
-    </View>
+    <ActivityNavigator/>
   )
 }
 

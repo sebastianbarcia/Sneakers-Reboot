@@ -16,7 +16,14 @@ const persistConfig = {
     key: 'root',
     storage: AsyncStorage
   }
-
+  
+  // AsyncStorage.clear()
+  // .then(() => {
+  //   console.log('Datos eliminados correctamente');
+  // })
+  // .catch((error) => {
+  //   console.error('Error al eliminar los datos:', error);
+  // });
 
 const RootReducer = combineReducers({
     brand : brandReducer,

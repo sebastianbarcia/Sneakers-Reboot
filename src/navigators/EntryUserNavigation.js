@@ -38,6 +38,7 @@ export const EntryUserNavigation = () => {
         <Stack.Screen
           name="picShot"
           component={ImageSelector} 
+          options={{title:"Introduce tu foto de perfil"}}
           /> 
     </Stack.Navigator>
   );

@@ -39,7 +39,7 @@ export const signup = (password , email , nameUser , valueDropdown , date , uses
         token: data.idToken,
         userId: data.localId,
         nameUser: nameUser,
-        value : valueDropdown,
+        valueDropdown : valueDropdown,
         date: date,
         photos: usesPhotos,
         mail : email

@@ -37,6 +37,7 @@ const Register = ({ navigation }) => {
 
   //dropdown
   const [valueDropdown, setValueDropdown] = useState(null);
+  console.log(valueDropdown)
   const [isFocus, setIsFocus] = useState(false);
 
   const dispatch = useDispatch()
@@ -88,8 +89,6 @@ const Register = ({ navigation }) => {
   };
 
   const usesPhotos = useSelector((state) => state.image.photos.image);
-
-  // console.log(datos);
 
   return (
     <View>
@@ -155,7 +154,7 @@ const Register = ({ navigation }) => {
               search
               maxHeight={300}
               labelField="label"
-              valueField="value"
+              valueField="label"
               placeholder={!isFocus ? "Elige tu pais" : "..."}
               searchPlaceholder="Search..."
               value={valueDropdown}

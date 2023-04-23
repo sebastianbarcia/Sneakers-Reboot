@@ -7,7 +7,7 @@ const dataTab = [
       name: "Actividad",
       component: Activity,
       icon: "flash-outline",
-      headerShow : true
+      headerShow : false
     },
     { id: 2, name: "Perfil", component: Profile, icon: "person-outline" , headerShow : false },
     {

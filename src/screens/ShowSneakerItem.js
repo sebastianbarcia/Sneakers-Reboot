@@ -11,7 +11,8 @@ const ShowSneakerItem = ({ route , navigation }) => {
 
   const sneaker = route.params;
   const day = new Date(sneaker.item.date);
-
+  const routeScreenData = sneaker.routeScreen.name
+ 
   const dispatch = useDispatch();
  
   const handleDelete = (item) => {
@@ -21,6 +22,10 @@ const ShowSneakerItem = ({ route , navigation }) => {
    //ahi que cambiar esto porque solo va a userProfile  navigation.push("userProfile")
   }
   
+  const handleStart = () => {
+    navigation.push("activityConfirm" , {sneaker} )
+    
+  }
 
   return (
     <>
@@ -52,7 +57,8 @@ const ShowSneakerItem = ({ route , navigation }) => {
 
         </View>
         <View style={styles.buttonDelete} >
-          <Button title="ELIMINAR" onPress={()=>handleDelete(sneaker.item.id)}></Button>
+          {routeScreenData === "userProfile" ?  <Button title="ELIMINAR" onPress={()=>handleDelete(sneaker.item.id)}></Button> : <Button title="EMPEZAR" onPress={handleStart}></Button>}
+         
         </View>
       </View>
     </>

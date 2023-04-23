@@ -43,7 +43,7 @@ const ProfileNavigator = () => {
          <Stack.Screen
           name="userProfile"
           component={UserProfile} 
-          options={{headerBackVisible:false}}
+          options={{headerBackVisible:false , title:"Perfil de usuario"}}
           /> 
            <Stack.Screen
           name="sneakerItem"

@@ -48,17 +48,17 @@ const UserShoeNavigator = () => {
          <Stack.Screen
           name="userProfile"
           component={UserProfile} 
-          options={{headerBackVisible:false}}
+          options={{headerBackVisible:false , title:"Perfil del usuario"}}
           /> 
            <Stack.Screen
           name="sneakerItem"
           component={ShowSneakerItem} 
-          
+          options={{title:"Zapatilla escogida"}}
           /> 
            <Stack.Screen
           name="picShot"
           component={ImageSelector} 
-         
+           options={{title:"Introduce tu foto de perfil"}}
           /> 
       </Stack.Navigator>
     )
