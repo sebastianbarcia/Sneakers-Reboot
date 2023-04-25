@@ -6,7 +6,7 @@ import { useRoute } from "@react-navigation/native";
 
 const ShoesItems = ({ item, navigation }) => {
   const routeScreen = useRoute();
-
+ 
   const handleShoes = (item) => {
     switch (routeScreen.name) {
 
@@ -47,7 +47,7 @@ const ShoesItems = ({ item, navigation }) => {
             style={{ fontSize: fontPixel(16), fontWeight: "bold" }}
           >{`${item.items.brand} ${item.items.name}`}</Text>
           <Text style={{ fontSize: fontPixel(14) }}>
-            {`250km/${item.items.estimateKm}km`}{" "}
+            {`${item.items.kmsDone}/${item.items.estimateKm}km`}{" "}
           </Text>
         </View>
         <Ionicons name="md-chevron-forward" size={24} color="black" />

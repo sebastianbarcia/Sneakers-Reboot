@@ -9,9 +9,7 @@ const initialState = {
  const userDataShoesReducer = (state = initialState , action ) => {
     switch (action.type) {
         case ADD_SHOE:
-
-            
-            
+  
         case REMOVE_SHOE:
         
         case CONFIRM_SHOE:

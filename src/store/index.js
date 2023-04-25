@@ -7,7 +7,7 @@ import userDataShoesReducer from "./reducers/dataShoesUser.reducers";
 import ShoeUserListReducer from "./reducers/shoesUserList.reducer";
 import photoReducer from "./reducers/photo.reducer";
 import AuthReducer from "./reducers/auth.reducer";
-
+import { pedometerReducer } from "./reducers/activity.reducer";
 import { persistStore, persistReducer } from 'redux-persist'
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -32,7 +32,8 @@ const RootReducer = combineReducers({
     dataUser : userDataShoesReducer,
     list : ShoeUserListReducer,
     image: photoReducer,
-    auth : AuthReducer
+    auth : AuthReducer,
+    pedometer: pedometerReducer
 })
 
 

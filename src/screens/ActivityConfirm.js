@@ -5,7 +5,19 @@ import { fontPixel, pixelSizeHorizontal } from "../utils/normalize";
 import { useState, useEffect } from "react";
 import Modal from "../components/Modal";
 
+import { useSelector, useDispatch } from 'react-redux';
+import { Pedometer } from 'expo-sensors';
+import { updateDistance , updateSteps , pausePedometer, restartPedometer } from "../store/actions/activity.action";
+
+
 const ActivityConfirm = ({ navigation, route }) => {
+
+  const steps = useSelector(state => state.pedometer.steps);
+  const distance = useSelector(state => state.pedometer.distance);
+  
+  const dispatch = useDispatch();
+
+  const [paused, setPaused] = useState(false);
   const sneaker = route.params;
 
   const [segundos, setSegundos] = useState(0);
@@ -13,6 +25,25 @@ const ActivityConfirm = ({ navigation, route }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
+ 
+  useEffect(() => {
+    let subscription;
+    const startPedometerUpdates = async () => {
+      subscription = Pedometer.watchStepCount((result) => {
+        if (!paused) {
+        dispatch(updateSteps(result.steps));
+        dispatch(updateDistance(result.steps * 0.00076)); // Cada paso equivale aproximadamente a 0.00076 km
+        }
+      });
+    };
+
+    startPedometerUpdates();
+
+    return () => {
+      subscription && subscription.remove();
+    };
+  }, [paused]);
+ 
   useEffect(() => {
     let intervalo;
     if (corriendo) {
@@ -33,10 +64,11 @@ const ActivityConfirm = ({ navigation, route }) => {
       minutos < 10 ? "0" + minutos : minutos
     }:${segundos < 10 ? "0" + segundos : segundos}`;
   };
+
+
   const detenerCronometro = () => {
     setCorriendo(false);
     setModalVisible(true);
-    console.log(formatearTiempo(segundos));
   };
 
   const onCancelModal = () => {
@@ -46,8 +78,11 @@ const ActivityConfirm = ({ navigation, route }) => {
 
   const sendDispatchPodometer = () => {
     console.log("enviado:", formatearTiempo(segundos));
+    console.log(sneaker.sneaker.item.items.kmsDone + distance)
     setModalVisible(!modalVisible);
   };
+
+
   return (
     <>
       <ShowProduct
@@ -64,7 +99,7 @@ const ActivityConfirm = ({ navigation, route }) => {
         </View>
         <View style={styles.containerTitleTwo}>
           <Text style={styles.textSubtitles}>Kms recorridos</Text>
-          <Text style={styles.functionText}>30 KMS</Text>
+          <Text style={styles.functionText}>{!distance ? "0.00" : distance.toFixed(2)}</Text>
         </View>
       </View>
       <View style={styles.buttonStyle}>

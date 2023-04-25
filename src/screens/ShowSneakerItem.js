@@ -38,13 +38,13 @@ const ShowSneakerItem = ({ route , navigation }) => {
         <View
           style={styles.numbers}
         >
-          <Text style={styles.fontSize}>250 kms</Text>
+          <Text style={styles.fontSize}>{sneaker.item.items.kmsDone} kms</Text>
           <Text style={styles.fontSize}>{sneaker.item.items.estimateKm} kms</Text>
         </View>
         <View style={styles.linearContainer }>
           <View
             style={{
-              width: `${(250 / sneaker.item.items.estimateKm) * 100}%`,
+              width: `${(sneaker.item.items.kmsDone / sneaker.item.items.estimateKm) * 100}%`,
               borderWidth: 2,
             }}
           ></View>
