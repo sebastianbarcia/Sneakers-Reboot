@@ -6,7 +6,7 @@ import { useRoute } from "@react-navigation/native";
 
 const ShoesItems = ({ item, navigation }) => {
   const routeScreen = useRoute();
- 
+ //xd
   const handleShoes = (item) => {
     switch (routeScreen.name) {
 
@@ -52,7 +52,6 @@ const ShoesItems = ({ item, navigation }) => {
         </View>
         <Ionicons name="md-chevron-forward" size={24} color="black" />
       </View>
-      <View></View>
     </TouchableOpacity>
   );
 };

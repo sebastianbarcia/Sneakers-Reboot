@@ -5,16 +5,16 @@ import { fontPixel, pixelSizeHorizontal } from "../utils/normalize";
 import { useState, useEffect } from "react";
 import Modal from "../components/Modal";
 
-import { useSelector, useDispatch } from 'react-redux';
-import { Pedometer } from 'expo-sensors';
-import { updateDistance , updateSteps , pausePedometer, restartPedometer } from "../store/actions/activity.action";
-
+import { useSelector, useDispatch } from "react-redux";
+import { Pedometer } from "expo-sensors";
+import { updateDistance, updateSteps } from "../store/actions/activity.action";
+import { API_URL } from "../constants/Database";
+import { Platform } from "react-native";
 
 const ActivityConfirm = ({ navigation, route }) => {
+  const steps = useSelector((state) => state.pedometer.steps);
+  const distance = useSelector((state) => state.pedometer.distance);
 
-  const steps = useSelector(state => state.pedometer.steps);
-  const distance = useSelector(state => state.pedometer.distance);
-  
   const dispatch = useDispatch();
 
   const [paused, setPaused] = useState(false);
@@ -25,14 +25,13 @@ const ActivityConfirm = ({ navigation, route }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
- 
   useEffect(() => {
     let subscription;
     const startPedometerUpdates = async () => {
       subscription = Pedometer.watchStepCount((result) => {
         if (!paused) {
-        dispatch(updateSteps(result.steps));
-        dispatch(updateDistance(result.steps * 0.00076)); // Cada paso equivale aproximadamente a 0.00076 km
+          dispatch(updateSteps(result.steps));
+          dispatch(updateDistance(result.steps * 0.00076)); // Cada paso equivale aproximadamente a 0.00076 km
         }
       });
     };
@@ -43,7 +42,7 @@ const ActivityConfirm = ({ navigation, route }) => {
       subscription && subscription.remove();
     };
   }, [paused]);
- 
+
   useEffect(() => {
     let intervalo;
     if (corriendo) {
@@ -65,7 +64,6 @@ const ActivityConfirm = ({ navigation, route }) => {
     }:${segundos < 10 ? "0" + segundos : segundos}`;
   };
 
-
   const detenerCronometro = () => {
     setCorriendo(false);
     setModalVisible(true);
@@ -77,11 +75,29 @@ const ActivityConfirm = ({ navigation, route }) => {
   };
 
   const sendDispatchPodometer = () => {
-    console.log("enviado:", formatearTiempo(segundos));
-    console.log(sneaker.sneaker.item.items.kmsDone + distance)
+    sneaker.sneaker.item.items.kmsDone =
+      sneaker.sneaker.item.items.kmsDone + distance;
     setModalVisible(!modalVisible);
-  };
 
+    fetch(`${API_URL}/orders/${sneaker.sneaker.item.id}.json`, {
+      method: "PUT",
+      body: JSON.stringify(sneaker.sneaker.item),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error al actualizar elemento");
+        }
+        console.log("Elemento actualizado correctamente");
+      })
+      .catch((error) => {
+        console.error("Error al actualizar elemento", error);
+      });
+
+    navigation.push("ActivityHome");
+  };
 
   return (
     <>
@@ -99,7 +115,9 @@ const ActivityConfirm = ({ navigation, route }) => {
         </View>
         <View style={styles.containerTitleTwo}>
           <Text style={styles.textSubtitles}>Kms recorridos</Text>
-          <Text style={styles.functionText}>{!distance ? "0.00" : distance.toFixed(2)}</Text>
+          <Text style={styles.functionText}>
+            {distance.toFixed(2)}
+          </Text>
         </View>
       </View>
       <View style={styles.buttonStyle}>
@@ -135,7 +153,7 @@ const styles = StyleSheet.create({
     marginTop: pixelSizeHorizontal(20),
     marginBottom: pixelSizeHorizontal(20),
   },
-  buttonStyle: { marginTop: pixelSizeHorizontal(60) },
+  buttonStyle: { marginTop: Platform.OS === "android" ? pixelSizeHorizontal(20) : pixelSizeHorizontal(80) ,marginHorizontal: 22},
   textSubtitles: {
     fontSize: fontPixel(22),
     textAlign: "center",

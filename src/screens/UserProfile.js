@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { fontPixel, pixelSizeHorizontal, widthPixel } from "../utils/normalize";
 import UserPic from "../components/UserPic";
@@ -17,25 +17,21 @@ import { getShoes } from "../store/actions/shoesUserList.action";
 import { Ionicons } from "@expo/vector-icons";
 
 const UserProfile = ({ navigation, route }) => {
-  
- // const { userShoe } = route.params;
-  
   const dispatch = useDispatch();
   const lista = useSelector((state) => state.list.list);
-  const user = useSelector((state) => state.auth)
-  
+  const user = useSelector((state) => state.auth);
+
   useEffect(() => {
     dispatch(getShoes());
-    
   }, []);
 
-  const handleAddSneaker = () =>{
-    
-    navigation.push('Form')
-    
-  }
+  const handleAddSneaker = () => {
+    navigation.push("Form");
+  };
 
-  const renderShoesItem = ({ item }) => <ShoesItems item={item} navigation={navigation} />;
+  const renderShoesItem = ({ item }) => (
+    <ShoesItems item={item} navigation={navigation} />
+  );
 
   return (
     <View style={styles.container}>
@@ -46,9 +42,7 @@ const UserProfile = ({ navigation, route }) => {
           <Text style={styles.text}>30 años</Text>
           <Text style={styles.text}>700 kms</Text>
         </View>
-        <View
-          style={styles.containerIcons}
-        >
+        <View style={styles.containerIcons}>
           <UserPic navigation={navigation} />
           <Pressable onPress={() => console.log("edit")}>
             <FontAwesome5 name="edit" size={18} color="black" />
@@ -57,12 +51,7 @@ const UserProfile = ({ navigation, route }) => {
       </View>
       <Text style={styles.titleList}>Zapatillas registradas</Text>
       <FlatList data={lista} renderItem={renderShoesItem}></FlatList>
-      <TouchableOpacity
-        style={styles.touchablePlus}
-        onPress={
-          handleAddSneaker
-        }
-      >
+      <TouchableOpacity style={styles.touchablePlus} onPress={handleAddSneaker}>
         <Ionicons name="ios-add-circle" size={64} color="grey" />
       </TouchableOpacity>
     </View>
@@ -98,15 +87,15 @@ const styles = StyleSheet.create({
     marginBottom: pixelSizeHorizontal(20),
     marginTop: pixelSizeHorizontal(40),
   },
-  containerIcons :{
+  containerIcons: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "flex-end",
   },
-  touchablePlus :{
+  touchablePlus: {
     position: "absolute",
     alignSelf: "flex-end",
     bottom: 16,
     display: "flex",
-  }
+  },
 });

@@ -1,54 +1,51 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Platform, StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
 import { SafeAreaView } from "react-native";
 import { useState } from "react";
 import { Dropdown } from "react-native-element-dropdown";
 
-import {
-  widthPixel,
-  heightPixel,
-} from "../utils/normalize";
+import { widthPixel, heightPixel } from "../utils/normalize";
 
-//redux 
-import { useSelector , useDispatch } from "react-redux";
-import { filterShoes , filterModel } from "../store/actions/shoes.actions";
+//redux
+import { useSelector, useDispatch } from "react-redux";
+import { filterShoes, filterModel } from "../store/actions/shoes.actions";
 import { findSizes, sizesShoes } from "../store/actions/sizeShoes.actions";
-import { shoesColor , filterColor } from "../store/actions/colorShoes.actions";
+import { shoesColor, filterColor } from "../store/actions/colorShoes.actions";
 import TitleForm from "./TitleForm";
 
 const Form = ({ navigation }) => {
-
   //redux
   const dispatch = useDispatch();
 
   //Sizes shoes
-  const filteredSize = useSelector(state => state.size.filteredSizes)
+  const filteredSize = useSelector((state) => state.size.filteredSizes);
 
-  const findSizesShoes = useSelector(state => state.size.findSizes)
+  const findSizesShoes = useSelector((state) => state.size.findSizes);
 
   //shoes brand
-  const filteredShoes = useSelector(state => state.brand.filteredShoes)
+  const filteredShoes = useSelector((state) => state.brand.filteredShoes);
   //shoes model
-  const modelFilter = useSelector(state => state.brand.filteredModel)
-  
+  const modelFilter = useSelector((state) => state.brand.filteredModel);
+
   const brandFilter = filteredShoes.filter((valor, indice) => {
-      return filteredShoes.indexOf(valor) === indice;
-  })
+    return filteredShoes.indexOf(valor) === indice;
+  });
   const filtres = brandFilter.map((brand) => ({
-      brand: brand,
-  }))
-   
-const hola = useSelector(state => state)
-console.log(hola)
+    brand: brand,
+  }));
+
+  // const hola = useSelector(state => state)
+  // console.log(hola)
+
   //color
-  const colorShoes = useSelector(state => state.color.color)
-  
-  const filterColorShoes = useSelector(state => state.color.findColor)
-  
+  const colorShoes = useSelector((state) => state.color.color);
+
+  const filterColorShoes = useSelector((state) => state.color.findColor);
+
   //brand
   const [isFocusBrand, setIsFocusBrand] = useState(false);
   const [valueBrand, setValueBrand] = useState(null);
-  
+
   //model
   const [modelFiltered, setModelFiltered] = useState();
   const [valueModel, setValueModel] = useState(null);
@@ -62,12 +59,20 @@ console.log(hola)
 
   //zapatilla elegida
   const [shoes, setShoes] = useState();
-  
+
   const handleShoes = () => {
-    if (shoes !== undefined && filterColorShoes.color !== undefined && findSizesShoes.size !== undefined) {
-      const shoesUser = { ...shoes, color: filterColorShoes.color , size: findSizesShoes.size };
+    if (
+      shoes !== undefined &&
+      filterColorShoes.color !== undefined &&
+      findSizesShoes.size !== undefined
+    ) {
+      const shoesUser = {
+        ...shoes,
+        color: filterColorShoes.color,
+        size: findSizesShoes.size,
+      };
       navigation.push("Products", {
-        shoesUser, 
+        shoesUser,
       });
     }
   };
@@ -115,19 +120,21 @@ console.log(hola)
 
   useEffect(() => {
     //filtrado que elimina marcas repetidas
-    dispatch(filterShoes(filteredShoes))
+    dispatch(filterShoes(filteredShoes));
     //tamaño
-    dispatch(sizesShoes(filteredSize))
+    dispatch(sizesShoes(filteredSize));
     //modelo
     setModelFiltered(modelFilter);
     //color
-    dispatch(shoesColor(colorShoes))
-    
-   }, [valueBrand]);
-  
+    dispatch(shoesColor(colorShoes));
+  }, [valueBrand]);
+
   return (
     <SafeAreaView style={styles.screenView}>
-      <TitleForm title="¿Cual es tu zapatilla?" subtitle="Elige entre todos los modelos de nuestra base de datos"/>
+      <TitleForm
+        title="¿Cual es tu zapatilla?"
+        subtitle="Elige entre todos los modelos de nuestra base de datos"
+      />
       <View style={styles.container}>
         {renderLabelBrand()}
         {/*Brand*/}
@@ -148,7 +155,7 @@ console.log(hola)
           onFocus={() => setIsFocusBrand(true)}
           onBlur={() => setIsFocusBrand(false)}
           onChange={(item) => {
-            dispatch(filterModel(item.brand))
+            dispatch(filterModel(item.brand));
             setValueBrand(item.brand);
             setIsFocusBrand(false);
           }}
@@ -204,7 +211,7 @@ console.log(hola)
           onFocus={() => setIsFocusSize(true)}
           onBlur={() => setIsFocusSize(false)}
           onChange={(item) => {
-            dispatch(findSizes(item.size))
+            dispatch(findSizes(item.size));
             setIsFocusSize(false);
           }}
         />
@@ -231,12 +238,12 @@ console.log(hola)
           onFocus={() => setIsFocusColor(true)}
           onBlur={() => setIsFocusColor(false)}
           onChange={(item) => {
-            dispatch(filterColor(item.color))
+            dispatch(filterColor(item.color));
             setIsFocusColor(false);
           }}
         />
       </View>
-      <View style={{ marginTop: 98 }}>
+      <View style={styles.Button}>
         <Button onPress={handleShoes} title="CONFIRMAR"></Button>
       </View>
     </SafeAreaView>
@@ -246,6 +253,7 @@ console.log(hola)
 export default Form;
 
 const styles = StyleSheet.create({
+  Button :{ marginTop: 98 ,  marginHorizontal: Platform.OS === "android" && 20},
   container: {
     padding: 16,
   },

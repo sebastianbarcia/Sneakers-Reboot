@@ -1,17 +1,12 @@
-import React from 'react'
-import UserShoeNavigator from '../navigators/UserShoeNavigator'
-
+import React from "react";
+import UserShoeNavigator from "../navigators/UserShoeNavigator";
 
 const Profile = () => {
-  
-    return(
-        <>
-          <UserShoeNavigator/>
-        </>
-    )
-  }
+  return (
+    <>
+      <UserShoeNavigator />
+    </>
+  );
+};
 
-
-
-export default Profile
-
+export default Profile;

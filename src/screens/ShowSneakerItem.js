@@ -53,7 +53,7 @@ const ShowSneakerItem = ({ route , navigation }) => {
         <Text style={styles.fontSize}>Talle: {sneaker.item.items.size}</Text>
         <Text style={styles.fontSize}>Color: {sneaker.item.items.color}</Text>
         <Text style={styles.fontSize}>Inicio de actividad: { `${day.getDate()}/${day.getMonth()}/${day.getFullYear()}`}</Text>
-        <Text style={styles.fontSize}>Ultima actividad: 1/1/2023 </Text>
+        {/* <Text style={styles.fontSize}>Ultima actividad: 1/1/2023 </Text> */}
 
         </View>
         <View style={styles.buttonDelete} >

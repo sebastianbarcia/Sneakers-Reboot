@@ -59,7 +59,7 @@ export default TypeUserGrid;
 
 const styles = StyleSheet.create({
   screenView: {
-    width: widthPixel(338),
+   // width: widthPixel(338),
     height: heightPixel(282),
     display: "flex",
     flexWrap: "wrap",

@@ -41,11 +41,9 @@ const ImageSelector = ({ navigation , picRegistered }) => {
 
   function handleSave() {
     dispatch(addPhoto(pickedUri));
-    if(navigation.push("userProfile")){
-      navigation.push("userProfile");
-    }else if(navigation.push("Register")){ 
-      navigation.push("Register");
-    }
+ 
+    navigation.push("userProfile") ||  navigation.push("Register")
+   
   }
   return (
     <View style={styles.container}>

@@ -1,24 +1,15 @@
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-//import Button from 'react-native-paper'
-import React, { useState, useCallback } from "react";
+import { StyleSheet, View, Text } from "react-native";
+import React, { useState} from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import TitleForm from "../components/TitleForm";
-//import { Dropdown } from 'react-native-element-dropdown'
 import UserPic from "../components/UserPic";
 import { widthPixel, heightPixel } from "../utils/normalize";
-
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { dataCountry } from "../data/dataCountry";
 import { Dropdown } from "react-native-element-dropdown";
 import { useSelector } from "react-redux";
 import { Alert } from "react-native";
-import {
-  TextInput,
-  Button,
-  Portal,
-  Dialog,
-  Paragraph,
-} from "react-native-paper";
+import { TextInput } from "react-native-paper";
 import ButtonForm from "../components/ButtonForm";
 import { useDispatch } from "react-redux";
 import { signup } from "../store/actions/auth.actions";
@@ -29,7 +20,7 @@ const Register = ({ navigation }) => {
   const [email, setMail] = useState("");
   const [nameUser, setNameUser] = useState("");
   const [password, setPassword] = useState("");
-  
+
   //date
   const [date, setDate] = useState(new Date());
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -37,10 +28,9 @@ const Register = ({ navigation }) => {
 
   //dropdown
   const [valueDropdown, setValueDropdown] = useState(null);
-  console.log(valueDropdown)
   const [isFocus, setIsFocus] = useState(false);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleDateChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
@@ -68,17 +58,14 @@ const Register = ({ navigation }) => {
     }
     return null;
   };
- 
 
-
-// EVENTO CHECK DATOS
+  // EVENTO CHECK DATOS
 
   const handleCheck = () => {
-    
-    if ((password.length > 8) && nameUser && email) {
-     
-      dispatch(signup(password , email , nameUser , valueDropdown , date , usesPhotos))
-
+    if (password.length > 8 && nameUser && email) {
+      dispatch(
+        signup(password, email, nameUser, valueDropdown, date, usesPhotos)
+      );
     } else {
       Alert.alert(
         "Datos incorrectos",
@@ -129,7 +116,6 @@ const Register = ({ navigation }) => {
             placeholder="Type something"
             secureTextEntry
             value={password}
-            
             onTouchStart={handleClosePicker}
             onChangeText={setPassword}
             right={<TextInput.Affix text="/100" />}

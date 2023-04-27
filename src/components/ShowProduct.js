@@ -1,6 +1,7 @@
 import { StyleSheet, Text, Image } from 'react-native'
 import React from 'react'
 import { heightPixel , fontPixel , pixelSizeHorizontal , pixelSizeVertical , widthPixel } from '../utils/normalize'
+import { Platform } from 'react-native'
 
 
 const ShowProduct = ({imgSrc , title}) => {
@@ -19,7 +20,7 @@ export default ShowProduct
 
 const styles = StyleSheet.create({
     image: {
-        height: heightPixel(210),
+        height: Platform.OS === "android" ?  heightPixel(240) : heightPixel(210),
         width: "100%",
       },
       title: {
