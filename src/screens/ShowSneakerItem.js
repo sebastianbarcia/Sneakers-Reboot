@@ -1,4 +1,4 @@
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, Platform, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import ShowProduct from "../components/ShowProduct";
 import { fontPixel, pixelSizeHorizontal, widthPixel } from "../utils/normalize";
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     marginBottom: pixelSizeHorizontal(10) 
   },
   linearContainer:{ backgroundColor: "gray", marginBottom:pixelSizeHorizontal(16) },
-  buttonDelete:{marginTop:pixelSizeHorizontal(125)},
+  buttonDelete:{marginTop: Platform.OS === "ios" ? pixelSizeHorizontal(125) : pixelSizeHorizontal(100)},
   containerItemsText:{gap: pixelSizeHorizontal(16)},
   fontSize:{
     fontSize:fontPixel(14)
