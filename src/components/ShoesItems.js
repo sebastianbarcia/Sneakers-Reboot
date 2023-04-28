@@ -47,7 +47,7 @@ const ShoesItems = ({ item, navigation }) => {
             style={{ fontSize: fontPixel(16), fontWeight: "bold" }}
           >{`${item.items.brand} ${item.items.name}`}</Text>
           <Text style={{ fontSize: fontPixel(14) }}>
-            {`${item.items.kmsDone}/${item.items.estimateKm}km`}{" "}
+            {`${item.items.kmsDone.toFixed(2)}/${item.items.estimateKm}km`}{" "}
           </Text>
         </View>
         <Ionicons name="md-chevron-forward" size={24} color="black" />

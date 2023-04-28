@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Platform, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { fontPixel, pixelSizeHorizontal, widthPixel } from "../utils/normalize";
 import ShowProduct from "../components/ShowProduct";
@@ -46,11 +46,10 @@ const UserKmLimit = ({ route, navigation }) => {
         <Ionicons name="information-circle-outline" size={25} color="black" />
         <Text style={styles.infoText}>
           Te recomendamos no hacer mas de 500 km con ellas y un máximo de 1000
-          kms. informacion informacion informacion informacion informacion
-          informacion informacion informacion informacion
+          kms. 
         </Text>
       </View>
-      <View>
+      <View style={styles.Button}>
         <Button title="CONFIRMAR" onPress={estimateKms}></Button>
       </View>
       <Modal
@@ -80,4 +79,7 @@ const styles = StyleSheet.create({
     fontSize: fontPixel(14),
     width: widthPixel(288),
   },
+  Button:{
+    marginHorizontal: 20, marginTop: Platform.OS === "android" ? 20 : 60
+  }
 });
